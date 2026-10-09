@@ -12,10 +12,16 @@
     } @else if (current.kind === 'error') {
       <cf-error (retry)="reload()" />
     } @else {
-      <ul class="plain">
+      <header class="page-head">
+        <h1>課程</h1>
+        @if (diaryTitle(current.sessions); as title) {
+          <p class="diary-title">{{ title }}</p>
+        }
+      </header>
+      <ul class="day-cards">
         @for (session of current.sessions; track session.id) {
           <li>
-            <a [routerLink]="['/sessions', session.id]">{{ heading(session) }}</a>
+            <a class="day-card" [routerLink]="['/sessions', session.id]">{{ session.trainedOn }}</a>
           </li>
         }
       </ul>

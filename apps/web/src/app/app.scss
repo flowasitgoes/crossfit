@@ -9,15 +9,16 @@
   height: 44px;
   padding-inline-start: 10px;
   padding-inline-end: 12px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  background: var(--cf-card);
-  box-shadow: var(--shadow-border);
-  color: var(--cf-text);
-  font-weight: 650;
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  border-radius: 0;
+  background: var(--psy-surface-card);
+  box-shadow: 2px 2px 0 var(--psy-color-base);
+  color: var(--psy-surface-card-fg);
+  font-family: var(--psy-font-family-display), var(--psy-font-family-body);
+  font-weight: 700;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition-property: background-color, color, box-shadow;
+  transition-property: background-color, color, box-shadow, transform;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
 }
@@ -57,8 +58,8 @@
   min-height: 44px;
   padding: 0 0.7rem;
   border-radius: 10px;
-  color: var(--cf-muted);
-  font-weight: 650;
+  color: var(--psy-surface-card-fg);
+  font-weight: 700;
   text-decoration: none;
   cursor: pointer;
   transition-property: background-color, color;
@@ -67,9 +68,9 @@
 }
 
 .site-nav a.is-current {
-  color: var(--cf-accent);
-  background: rgb(194 65 12 / 8%);
-  box-shadow: inset 0 -2px 0 var(--cf-accent);
+  color: var(--psy-surface-card-fg);
+  background: color-mix(in srgb, var(--psy-color-secondary-lime) 35%, transparent);
+  box-shadow: inset 0 -3px 0 var(--psy-border-strong);
 }
 
 .menu-backdrop {
@@ -81,19 +82,20 @@
   cursor: pointer;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .menu-button:hover {
-    box-shadow: var(--shadow-border-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--psy-color-base);
   }
 
   .site-nav a:hover {
-    background: rgb(28 25 23 / 5%);
-    color: var(--cf-text);
+    background: color-mix(in srgb, var(--psy-color-secondary-lime) 18%, transparent);
+    color: var(--psy-surface-card-fg);
   }
 
   .site-nav a.is-current:hover {
-    color: var(--cf-accent);
-    background: rgb(194 65 12 / 12%);
+    color: var(--psy-surface-card-fg);
+    background: color-mix(in srgb, var(--psy-color-secondary-lime) 35%, transparent);
   }
 }
 
@@ -112,10 +114,10 @@
     gap: 2px;
     min-width: 12rem;
     padding: 6px;
-    background: var(--cf-card);
-    border: 1px solid var(--cf-line);
-    border-radius: 17px;
-    box-shadow: var(--shadow-border);
+    background: var(--psy-surface-card);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    border-radius: 0;
+    box-shadow: var(--psy-shadow-hard);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -132,7 +134,7 @@
   }
 
   .site-nav a.is-current {
-    box-shadow: inset 3px 0 0 var(--cf-accent);
+    box-shadow: inset 3px 0 0 var(--psy-border-strong);
   }
 }
 

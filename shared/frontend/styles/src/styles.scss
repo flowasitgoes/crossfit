@@ -6,6 +6,7 @@
   --cf-card: #fffcf8;
   --cf-line: #e7e1d8;
   --cf-accent: #c2410c;
+  --psy-shadow-hard: 5px 5px 0 var(--psy-color-base);
   --shadow-border:
     0px 0px 0px 1px oklch(0 0 0 / 0.06),
     0px 1px 2px -1px oklch(0 0 0 / 0.06),
@@ -24,9 +25,66 @@ img {
 
 .class-hero h1,
 .block h2,
-.move-name {
-  font-weight: 650;
+.move-name,
+.page-head h1,
+.diary-title {
+  font-family: var(--psy-font-family-display), var(--psy-font-family-body);
+  font-weight: 700;
   letter-spacing: -0.03em;
+}
+
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.85rem;
+}
+
+.page-head h1 {
+  margin: 0;
+}
+
+.diary-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.day-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-card {
+  display: flex;
+  align-items: center;
+  min-height: 4.5rem;
+  padding: 1rem 1.15rem;
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  border-radius: 0;
+  background: var(--psy-gradient-card-surface), var(--psy-surface-card);
+  box-shadow: var(--psy-shadow-hard);
+  color: var(--psy-surface-card-fg);
+  font-family: var(--psy-font-family-display), var(--psy-font-family-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  transition-property: transform, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .day-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--psy-color-base);
+  }
 }
 
 .class-hero {
@@ -41,9 +99,11 @@ img {
 
 .class-kicker {
   margin: 0;
-  color: var(--cf-accent);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  color: var(--psy-kicker-text-on-light);
+  font-size: var(--psy-font-size-small);
+  font-weight: var(--psy-font-weight-kicker);
+  letter-spacing: var(--psy-letter-spacing-kicker);
+  text-transform: uppercase;
 }
 
 .move-title {
@@ -72,7 +132,7 @@ img {
 .scheme {
   margin: 0.45rem 0 0;
   max-width: 38rem;
-  color: var(--cf-muted);
+  color: var(--psy-surface-card-fg-muted);
   line-height: 1.5;
 }
 
@@ -82,8 +142,10 @@ img {
   gap: 0.9rem 1rem;
   align-items: start;
   margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--cf-line);
+  padding: 0.9rem;
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  background: var(--psy-surface-card-muted);
+  box-shadow: 3px 3px 0 var(--psy-color-base);
 }
 
 .move:not(:has(img)) {
@@ -99,9 +161,10 @@ img {
   --frame-pad: 0.45rem;
   margin: 0;
   padding: var(--frame-pad);
-  background: var(--cf-card);
-  border: 1px solid var(--cf-line);
-  border-radius: calc(0.65rem + var(--frame-pad) + 1px);
+  background: var(--psy-surface-card);
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--psy-color-base);
 }
 
 .move-figure img {
@@ -119,8 +182,9 @@ img {
 
 .overview {
   margin-top: 0.8rem;
-  border: 1px solid var(--cf-line);
-  border-radius: 0.85rem;
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  border-radius: 0;
+  box-shadow: var(--psy-shadow-hard);
 }
 
 .move-body:has(.move-main + .cue) {
@@ -157,7 +221,7 @@ img {
 }
 
 .stats dt {
-  color: var(--cf-muted);
+  color: var(--psy-surface-card-fg-muted);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
 }
@@ -173,7 +237,7 @@ img {
   margin: 0.75rem 0 0;
   padding-left: 0.75rem;
   border-left: 2px solid var(--cf-accent);
-  color: #44403c;
+  color: var(--psy-surface-card-fg);
   line-height: 1.55;
   white-space: pre-line;
 }
@@ -189,7 +253,7 @@ img {
 .media-credit {
   grid-column: 1 / -1;
   margin: 0;
-  color: var(--cf-muted);
+  color: var(--psy-surface-card-fg-muted);
   font-size: 0.68rem;
   line-height: 1.35;
 }

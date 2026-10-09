@@ -33,8 +33,9 @@ export class SessionList {
     void this.reload();
   }
 
-  protected heading(session: Session): string {
-    return session.title.trim() || session.trainedOn;
+  protected diaryTitle(sessions: Session[]): string {
+    const titles = new Set(sessions.map((session) => session.title.trim()).filter(Boolean));
+    return titles.size === 1 ? [...titles][0] : '';
   }
 
   protected reload(): void {

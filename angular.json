@@ -40,6 +40,7 @@
               }
             ],
             "styles": [
+              "apps/web/src/mimosa.css",
               "shared/frontend/styles/src/styles.scss",
               "apps/web/src/styles.scss"
             ]
@@ -129,6 +130,7 @@
               "@ionic/angular/css/text-alignment.css",
               "@ionic/angular/css/text-transformation.css",
               "@ionic/angular/css/flex-utils.css",
+              "apps/mobile/src/mimosa.css",
               "shared/frontend/styles/src/styles.scss",
               "apps/mobile/src/styles.scss"
             ]

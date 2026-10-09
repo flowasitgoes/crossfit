@@ -1,19 +1,24 @@
-<h1>課程</h1>
 @if (state(); as current) {
   @if (current.kind === 'loading') {
+    <h1>課程</h1>
     <cf-loading message="正在讀取課表" />
   } @else if (current.kind === 'empty') {
+    <h1>課程</h1>
     <cf-empty message="還沒有上課紀錄" />
   } @else if (current.kind === 'error') {
+    <h1>課程</h1>
     <cf-error (retry)="reload()" />
   } @else {
-    <ul class="plain">
+    <header class="page-head">
+      <h1>課程</h1>
+      @if (diaryTitle(current.sessions); as title) {
+        <p class="diary-title">{{ title }}</p>
+      }
+    </header>
+    <ul class="day-cards">
       @for (session of current.sessions; track session.id) {
         <li>
-          <a [routerLink]="['/sessions', session.id]">{{ heading(session) }}</a>
-          @if (session.title.trim()) {
-            <span>{{ session.trainedOn }}</span>
-          }
+          <a class="day-card" [routerLink]="['/sessions', session.id]">{{ session.trainedOn }}</a>
         </li>
       }
     </ul>

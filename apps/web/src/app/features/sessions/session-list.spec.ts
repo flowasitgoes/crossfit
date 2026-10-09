@@ -45,8 +45,8 @@ describe('SessionList', () => {
     await fixture.whenStable();
     fixture.detectChanges();
     const link = fixture.nativeElement.querySelector('a[href="/sessions/s1"]') as HTMLAnchorElement;
-    expect(link.textContent).toContain('WOD October 7');
-    expect(fixture.nativeElement.textContent).toContain('2026-10-07');
+    expect(link.textContent?.trim()).toBe('2026-10-07');
+    expect(fixture.nativeElement.querySelector('.diary-title')?.textContent).toContain('WOD October 7');
   });
 
   it('shows the read error on failure', async () => {
