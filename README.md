@@ -31,3 +31,4 @@ npx cap open android
 
 Firebase emulator 的專案 id 是 `demo-crossfit`。還沒有正式 Firebase 專案，不要 deploy。
 # crossfit
+# crossfit
