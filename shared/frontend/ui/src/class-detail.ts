@@ -93,11 +93,22 @@ export class ClassDetail {
 
   protected diaryLines(session: Session): Array<{ label: string; value: string }> {
     return [
-      { label: '學生的感受', value: session.athleteNote },
+      { label: '', value: session.athleteNote },
       { label: '老師的感受', value: session.coachNote },
       { label: '上課地點', value: session.location },
       { label: '器材', value: session.equipment },
       { label: '天氣', value: session.weather },
     ].filter((line) => line.value.trim());
+  }
+
+  protected noteList(value: string): string[] | null {
+    const lines = value
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean);
+    if (!lines.length || !lines.every((line) => line.startsWith('-'))) {
+      return null;
+    }
+    return lines.map((line) => line.replace(/^-\s*/, ''));
   }
 }

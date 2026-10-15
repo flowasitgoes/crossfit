@@ -4,7 +4,7 @@
 
 這一版只呈現上課內容。老師和學生不在畫面上新增或編輯。內容寫在 `shared/frontend/data-access/src/catalog.ts`。
 
-三張動作插畫來自 RepDB 免費版，只放在 App 裡使用。Exercise data by [RepDB](https://repdb.co)。
+動作插畫來自 RepDB 免費版，只放在 App 裡使用。Exercise data by [RepDB](https://repdb.co)。
 
 ## 指令
 

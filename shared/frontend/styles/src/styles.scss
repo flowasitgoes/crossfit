@@ -250,6 +250,31 @@ img {
   margin-top: 0;
 }
 
+.diary-note {
+  margin: 0.35rem 0 1rem;
+  color: var(--psy-surface-card-fg);
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.diary-list {
+  margin: 0.35rem 0 0;
+  padding-left: 1.4rem;
+  list-style-type: disc;
+  list-style-position: outside;
+  color: var(--psy-surface-card-fg);
+  line-height: 1.55;
+}
+
+.diary-list li {
+  display: list-item;
+  list-style-type: disc;
+}
+
+.diary-list li + li {
+  margin-top: 0.4rem;
+}
+
 .media-credit {
   grid-column: 1 / -1;
   margin: 0;

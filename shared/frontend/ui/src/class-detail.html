@@ -113,10 +113,20 @@
 @if (diaryLines(session()); as lines) {
   @if (lines.length) {
     <section class="block">
-      <h2>日記</h2>
-      @for (line of lines; track line.label) {
-        <h3>{{ line.label }}</h3>
-        <p>{{ line.value }}</p>
+      <h2>學員筆記</h2>
+      @for (line of lines; track line.label + line.value) {
+        @if (line.label) {
+          <h3>{{ line.label }}</h3>
+        }
+        @if (noteList(line.value); as items) {
+          <ul class="diary-list">
+            @for (item of items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        } @else {
+          <p class="diary-note">{{ line.value }}</p>
+        }
       }
     </section>
   }
