@@ -104,7 +104,7 @@ export const movements: Movement[] = [
   {
     id: 'single-arm-triple-extension',
     name: 'Single Arm Triple Extension 單手三重伸展',
-    imagePath: null,
+    imagePath: '/media/prep/single-arm-triple-extension.jpg',
     videoPath: null,
     cues: '① 利用腳踝、膝蓋、髖部依序伸展。② 產生向上的爆發力。',
     execution: '',
@@ -112,7 +112,7 @@ export const movements: Movement[] = [
   {
     id: 'single-arm-scarecrow-pull',
     name: 'Single Arm Scarecrow Pull 單手稻草人拉',
-    imagePath: null,
+    imagePath: '/media/prep/single-arm-scarecrow-pull.jpg',
     videoPath: null,
     cues: '① 手肘向外上方拉高。② 再旋轉肩膀，讓拳頭朝上。',
     execution: '',

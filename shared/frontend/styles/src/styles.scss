@@ -172,8 +172,20 @@ img {
   box-shadow: 3px 3px 0 var(--psy-color-base);
 }
 
+.move-figure:has(img.sequence) {
+  --frame-pad: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
 .move-figure img {
   border-radius: 0.65rem;
+}
+
+.move-figure img.sequence {
+  border-radius: 0;
 }
 
 .move-figure img.icon-card {
