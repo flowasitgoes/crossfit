@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { MovementRepository } from '@app/frontend/data-access';
+import { MovementRepository, SessionRepository } from '@app/frontend/data-access';
 import { MovementList } from './movement-list';
 
 describe('MovementList', () => {
@@ -13,6 +13,10 @@ describe('MovementList', () => {
         {
           provide: MovementRepository,
           useValue: { list: () => new Promise((resolve) => (resolveList = resolve)) },
+        },
+        {
+          provide: SessionRepository,
+          useValue: { list: () => Promise.resolve([]) },
         },
       ],
     });

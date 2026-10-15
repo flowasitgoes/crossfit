@@ -126,17 +126,26 @@ ul.plain a {
 
 ul.plain a.name-line {
   flex-direction: row;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .name-line {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  line-height: 1.3;
+}
+
+.name-text {
+  display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 0.65rem;
-  line-height: 1.3;
+  min-width: 0;
 }
 
 .name-zh {
@@ -144,6 +153,13 @@ ul.plain a.name-line {
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0;
+}
+
+.move-count {
+  flex: none;
+  color: var(--psy-surface-card-fg);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
 }
 
 h1 {

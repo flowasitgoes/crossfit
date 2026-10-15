@@ -1,14 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { Movement } from '@app/contracts';
-import { MovementRepository } from '@app/frontend/data-access';
+import {
+  countMovementAppearances,
+  MovementRepository,
+  SessionRepository,
+} from '@app/frontend/data-access';
 import { EmptyState, ErrorState, LoadingState, splitMovementName } from '@app/frontend/ui';
 
 type ListState =
   | { kind: 'loading' }
   | { kind: 'empty' }
   | { kind: 'error' }
-  | { kind: 'ready'; movements: Movement[] };
+  | { kind: 'ready'; movements: Movement[]; counts: Record<string, number> };
 
 @Component({
   selector: 'web-movement-list',
@@ -17,6 +21,7 @@ type ListState =
 })
 export class MovementList {
   private readonly movements = inject(MovementRepository);
+  private readonly sessions = inject(SessionRepository);
   protected readonly state = signal<ListState>({ kind: 'loading' });
 
   constructor() {
@@ -27,12 +32,19 @@ export class MovementList {
     return splitMovementName(name);
   }
 
+  protected countFor(counts: Record<string, number>, id: string): number {
+    return counts[id] ?? 0;
+  }
+
   protected reload(): void {
     this.state.set({ kind: 'loading' });
-    void this.movements
-      .list()
-      .then((movements) => {
-        this.state.set(movements.length ? { kind: 'ready', movements } : { kind: 'empty' });
+    void Promise.all([this.movements.list(), this.sessions.list()])
+      .then(([movements, sessions]) => {
+        this.state.set(
+          movements.length
+            ? { kind: 'ready', movements, counts: countMovementAppearances(sessions) }
+            : { kind: 'empty' },
+        );
       })
       .catch(() => this.state.set({ kind: 'error' }));
   }

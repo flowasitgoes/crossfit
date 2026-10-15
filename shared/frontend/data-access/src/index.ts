@@ -4,6 +4,7 @@ import { SessionRepository } from './session-repository';
 
 export { MovementRepository } from './movement-repository';
 export { SessionRepository } from './session-repository';
+export { countMovementAppearances } from './movement-counts';
 export { movements, sessionOverviews, sessions } from './catalog';
 
 export function provideDataAccess() {

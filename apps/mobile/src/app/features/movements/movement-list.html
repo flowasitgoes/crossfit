@@ -6,21 +6,31 @@
 <ion-content class="ion-padding">
   @if (state(); as current) {
     @if (current.kind === 'loading') {
+      <h1>動作</h1>
       <cf-loading message="正在讀取動作" />
     } @else if (current.kind === 'empty') {
+      <h1>動作</h1>
       <cf-empty message="還沒有動作" />
     } @else if (current.kind === 'error') {
+      <h1>動作</h1>
       <cf-error (retry)="reload()" />
     } @else {
+      <header class="page-head page-head-spread">
+        <h1>動作</h1>
+        <p class="diary-title">目前共學了 {{ current.movements.length }} 種動作</p>
+      </header>
       <ul class="plain">
         @for (movement of current.movements; track movement.id) {
           <li>
             @let name = splitName(movement.name);
             <a class="name-line" [routerLink]="['/movements', movement.id]">
-              <span>{{ name.english }}</span>
-              @if (name.chinese) {
-                <span class="name-zh">{{ name.chinese }}</span>
-              }
+              <span class="name-text">
+                <span>{{ name.english }}</span>
+                @if (name.chinese) {
+                  <span class="name-zh">{{ name.chinese }}</span>
+                }
+              </span>
+              <span class="move-count">{{ countFor(current.counts, movement.id) }}</span>
             </a>
           </li>
         }
