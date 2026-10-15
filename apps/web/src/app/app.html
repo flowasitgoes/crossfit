@@ -18,7 +18,7 @@
         </svg>
         <svg class="icon-bars" [class.is-shown]="!open()" viewBox="0 0 24 24" width="22" height="22">
           <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        </svg>
+      </svg>
       </span>
       {{ open() ? '關閉' : '選單' }}
     </button>
@@ -39,4 +39,4 @@
     <button type="button" class="menu-backdrop" aria-label="關閉選單" (click)="close()"></button>
   }
   <router-outlet />
-</div>
+  </div>
